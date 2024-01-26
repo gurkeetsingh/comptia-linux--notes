@@ -1,1 +1,1 @@
-hello these are my notes for the linux
+# Hello these are my notes for the linux
