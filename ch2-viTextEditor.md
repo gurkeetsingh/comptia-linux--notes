@@ -12,9 +12,9 @@
 
 - Command line: press `: (colon key)` to move to command line mode to execute command that allow searching, replacing, saving and quitting.
 - Insert mode: there are atleast 6 different insert option within vi:
-  - i _Insert text to the left of the cursor
-  - I_ Insert text at the beginning of the current line
-  - a _Append text to the right of the cursor
-  - A_  Append text at the end of the current line
-  - o _Open a newline below the current line and start inserting text
-  - O_ Open a newline above the current line and start inserting text
+  - i - Insert text to the left of the cursor
+  - I - Insert text at the beginning of the current line
+  - a - Append text to the right of the cursor
+  - A - Append text at the end of the current line
+  - o - Open a newline below the current line and start inserting text
+  - O - Open a newline above the current line and start inserting text
