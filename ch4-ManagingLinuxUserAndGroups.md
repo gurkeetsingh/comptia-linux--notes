@@ -34,7 +34,7 @@ User and system accounts:
 
 where linux stores user configuration files on the local system. Information for users and  groups is storedin the following coniguration files:
 
-`/etc/passwd`:
+`/etc/passwd` a user database file:
 
 - contains `user account` information
 - it is an example of `flat-file database`.
@@ -43,6 +43,16 @@ where linux stores user configuration files on the local system. Information for
 - each record contains `seven fields`.
 - A `: (colon)` is used as a delimeter to separate the fields.
 - the format for a record in `/etc/passwd` file is: `user_name:password:uid:gid:comment:home_directory:default_shell`
+- system accounts donot require a default shell. these accounts have either `/sbin/nologin` or `/bin/false` in the default_shell field.
+
+`/etc/shadow` the protected user passsword file:
+
+- it is a flat file database that store user password and password aging expiration.
+- each record in in `/etc/passwd` should have a corresponding record in `/etc/shadow`
+- the format for a record in /etc/shadow is: `username:password:last_modified:min_days:max_days:warn_days:inactive:expire`
+- password field stores the user's password in encrypted format using hash.
+- if password field contains two `!!` marks, an account password have never been assigned.
+- the default values of `min_days`, `warn_days` and `max_days` is stored in `/etc/login.defs`.  
 
 ## CREATING AND MANAGING USER ACCOUNTS FROM THE COMMAND LINE
 
