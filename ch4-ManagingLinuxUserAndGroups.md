@@ -71,6 +71,7 @@ The /etc/group file is a flat-file database that contains four fields:
 - The `passwd` utility allows you or root to change your password and allows a system administrator to manage password aging.
 - a user can change their own password by executing the command `passwd`
 - root can change other user password using the command `passwd <username>`
+- `useradd -r name` is used to create a system user account
 
 `/etc/default/useradd`:
 
@@ -83,11 +84,35 @@ The /etc/group file is a flat-file database that contains four fields:
 
 modifying user settings with `usermod`:
 
-the usermod command is used to modify an existing user account.
+the `usermod` command is used to modify an existing user account.
 
 - `-G groupName` removes all of the user secondary groups and replace them with a new secondary groups or comma-delimited list of secondary groups
 - `-aG groupName` adds a new secondary group
 - `-l` changes the user name
 - `-d` changes the locatioin of the user home directory
 - `-m` moves the current user home directory to the new new user name. command to do this is:
-`usermod -l user2 -d /home/user2 -m student2`  
+`usermod -l user2 -d /home/user2 -m student2`
+
+## provisioning new workgroup with `groupadd`
+
+linux uses groups to provide common access to a system resource for multiple users.
+
+provisioning a new workgroup using `groupadd`:
+
+- it is used to add groups to a linux system.
+- syntax to do this is: `groupadd options name`
+- to create a system group use: `groupadd -r name`
+
+setting group password with `gpasswd`:
+
+- gpasswd command is used to manage the files `/etc/group` and `/etc/gshadow`
+- this command is executed by the group admin or a system admin
+- to a assign a `group admin` a system admin or group admin should execute the `gpasswd -A username` command
+- `-a username` add user to group.
+- `-d username` delete a user from group
+- `-r` removes the group password.
+
+changing workgroup settings with `groupmod`:
+
+- `-g` changes the group GID number
+- `-n` changes the group name
