@@ -31,7 +31,7 @@ Currently, the `Linux Foundation` manages the FHS.
 
 the `absolute path` to a file is the path from the root (/) directory. it always begin with /
 
-## viewing deirectory contents with ls
+## viewing directory contents with ls
 
 - when you provide an absolute path to a directory ls display the contents of that dir
 
@@ -39,3 +39,15 @@ options for `ls`:
 
 - `-a` display all files including hidden files. hidden file names are prefixed with a `dot`. many configurations file are hidden.
 - `-r` displays the directory contents recursively, ie it displays the contents of the current dir as well as the contents of all subdirectories
+
+## managing linux files
+
+- everything in linux is referenced by a file. even a directory is a file.
+
+Files, Filenames and inodes:
+
+- `linux files` consist of a filename, inode and data block(s).
+- when a file is created it is given a name by the user or application and assigned a unique `inode` number (index number) by the filesystem
+- operating system uses the inode number not the filename to access the file and its information
+- A `linux filename` may contain upto `255` characters. must not contain a forward slash or null character
+- filenames in linux are `case sensitive`
