@@ -39,6 +39,7 @@ options for `ls`:
 
 - `-a` display all files including hidden files. hidden file names are prefixed with a `dot`. many configurations file are hidden.
 - `-r` displays the directory contents recursively, ie it displays the contents of the current dir as well as the contents of all subdirectories
+- `-F` is used to show the type of files.
 
 ## managing linux files
 
@@ -51,3 +52,38 @@ Files, Filenames and inodes:
 - operating system uses the inode number not the filename to access the file and its information
 - A `linux filename` may contain upto `255` characters. must not contain a forward slash or null character
 - filenames in linux are `case sensitive`
+
+Creating and validating files with `touch` and `stat`:
+
+- creating a new file can be accomplished by executing the `touch` command.
+- `stat` command is used to view the timestamps(`access, modification, change`) and inode numbers of the file use the stat command
+- On `ext-based` filesystems such as `ext 3` and ext 4, all inodes are `created` when the filesystem is `built`, so it is possible to run out of inodes even though there is plenty of disk space available! `XFS filesystems` support `dynamic inode allocation`, building inodes as needed, so they do not suffer from inode exhaustion issues.
+
+Soft and Hard links:
+
+- A link is a method of referring to data stored in an inode or another file.
+- basically it is an `pointer`.
+- this allows us to change data in one file and have that change reflected in other filenames.
+- A `hardlink` associates the filename with the file's inode number.
+- to `create` hardlink use the command `ln filename hardlinkfile`.
+- hardlink only works when used wihtin the `same filesystem`.
+- in stat when link is 2, it means that one file inode has 2 filenames.
+- you can use the command `unlink` to remove the link of the file from the same inode number used by more than 1 file. its syntax is: `unlink hardlinkfile`.
+- `SOFTLINK`
+- A `symbolic link` also called a soft link.
+- it can reference a file in the same filesystem, another filesystem, directories, or even across the network.
+- each symbolic link file has it own inode
+- the data within `symlink` contains the filename it is linked to, similar to shortcut in windows or macos
+- its syntax is:`ln -S sourcefile destinationfile`
+- in softlink the link count don't change this is because a soft link creates its own inode instead of adding another filename to the current inode.
+
+how files are stored on most filesystem:
+
+- a file's `metadata` is stored in an inode. `Inode` contain all the information about a file. such as permission, number of links, user and group owner, file size, time stamps and data pointer(to datablocks) but not the `FILENAME`.
+- when a file is created it is assigned an inode numbers from a list of available inode number in the system
+
+Creating new directories with `mkdir`:
+
+- syntax to create a directory is: `mkdir directoryName`.
+- you can use an absolute path or relative path to create a directory somewhere other than the current directory.
+- the `mkdir -p` command creates a directory `tree`.
