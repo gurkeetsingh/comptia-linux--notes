@@ -87,3 +87,39 @@ Creating new directories with `mkdir`:
 - syntax to create a directory is: `mkdir directoryName`.
 - you can use an absolute path or relative path to create a directory somewhere other than the current directory.
 - the `mkdir -p` command creates a directory `tree`.
+
+## Finding files in the linux system
+
+using `find` to search for files:
+
+- find utility is a tool that can be used to search for files by `bruteforce` instead of searching through a pre-allocated database.
+- the find command searches by default are `recursive through directories` but can be limited by using the `-mindepth` and `-maxdepth` options
+- to use find: `find start_directory expression`
+- mutiple start dir can be specified.
+- if start_directory is not defined then search start from the current directory.
+- `expression` defines what to search for. it must be enclosed in quote marks ''
+- boolean operators combine expressions using: -a for and, -not for not, -o for or
+- you may also execute a command on the results of the find command. the 2 expression `-exec` [it doesn't ask for permission before executing] and `-ok` [it do ask before execution] take the standard output from the find command and make it standard input to the specified command
+- `sudo find /var/log -name '*.log' -exec ls -l {} \;`    This command is used to find a .log file in the given dir. {} is used to contain the ouput of find command so it can be used as input to the ls -l command
+
+using `xargs` to run commands from standard input:
+
+- the `xargs` command is used to read whitespace-delimited input and execute a command on each input. a whitespace delimiter is a space, tab and newline.
+- the `-I` option in the command is a string replacement option and the curly braces are a placeholder for the standard input. `xargs -I {}`
+- `ls file* | xargs -I {} mv {} test.{}`, this renames the extension of all the file[a,b,c] to the test.file*
+
+using `locate` to find files
+
+- the locate command find files by looking for the filename in a pre-allocated database
+- the database `/var/lib/mlocate/mlocate.db` is updated daily.
+- the output of the locate command lists the `absolute path` to the file.
+- `updatedb` command is used to update the mlocate.db
+
+## Finding content within files: grep
+
+using `grep` to search within files:
+
+- the grep utility may be used to search for specific content within a file. by default, grep displays the line on which the string is found.
+- sytax: `grep 'option' 'string'` example `grep student1 /etc/passwd`, if the string is found by default the grep will print the line the string is on.
+- the grep utility can also search for a text string across `multiple files`.
+- `-n` option to the grep command will display the number of the line on which the string was found.
