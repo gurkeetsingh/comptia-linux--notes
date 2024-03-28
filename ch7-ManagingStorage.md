@@ -144,9 +144,11 @@ using `mkfs` to create a filesystem:
 - the dir `mnt` is used to mount a temporary automounted filesystem from a network filesystem and `media` is used to mount a media devices like a usb or disk
 - mount command requires a `root access`
 - `mount -t filesystem_type device mount_point`
+- -t filesystem type is optional, if the destination directory is omitted then it mounts the filesystems listed in the /etc/fstab and same happen if you only specify the mount point
 - mount command with no switches displays mounted filesytem and its too many in output
 - command `cat /proc/mounts` displays mounted filesystems. proc dir contains the current state of the kernel
 - to remount a filesystem with new options execute `mount -o remount newMountOptions mountPoint`
+- it can be unmounted by using the command `umount device` or `umount mountpoint`
 
 ## Mounting filesystem automatically at boot
 
@@ -155,3 +157,4 @@ using `mkfs` to create a filesystem:
 - `ADDING A MOUNT POINT IN /etc/fstab`
 - this file contains a mount parameters for a device
 - `sudo mount -a` is used to mount all the devices on the system but it is done automatically at the boot if that device has a option of `auto or defaults` enable
+
